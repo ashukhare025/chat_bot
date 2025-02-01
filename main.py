@@ -20,7 +20,7 @@ st.sidebar.write("""
 # Function to execute queries
 
 def run_query(sql, params=()):
-    with sqlite3.connect("employee_data.db") as conn:
+    with sqlite3.connect("chat_assistant.db") as conn:
         cur = conn.cursor()
         cur.execute(sql, params)
         return cur.fetchall()
@@ -95,5 +95,4 @@ user_query = st.text_area("Enter your query:", height=150)
 if user_query:
     with st.spinner("Fetching results..."):
         output = handle_query(user_query)
-    st.markdown(f"### Response:
-{output}")
+    st.markdown(f"### Response:\n{output}")
